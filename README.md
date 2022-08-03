@@ -1,46 +1,91 @@
-# Getting Started with Create React App
+# Frontend Mentor - Tip calculator app solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-In the project directory, you can run:
+### The challenge
 
-### `npm start`
+Users should be able to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- View the optimal layout depending on their device's screen size for the preview  components
+- See hover and focus states for interactive elements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### Screenshot
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Mobile
 
-### `npm run build`
+![](./public/design/expense-mobile.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Desktop
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](./public/design/expense-desktop.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Links
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Live Site URL: [Expense chart Component](https://master--effulgent-daifuku-376ef4.netlify.app/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Built with
 
-## Learn More
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### What I learned
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The bar chart with the amount, amount(height and color), and day was achieved by using a flex with column. 
+- Then the height and color ``(bar__chart-height)`` bar was set with the props from the data source in percentage. 
+- The amount ```(bar__chart-amount)``` was placed position as absolute because if left with the normal size, it would overflow from the parent flex container. Therefore, making it absolute positioned made sure it stayed within its flex container. 
+- The position for ```(bar__chart-amount)``` was set at a calculated distance of the ``(bar__chart-height) + 20%`` from the bottom. The 20% ensure all the flex item has that same gap between the amount and height.
+
+see below:
+
+HTML:
+```html
+    <div className="bar__chart" onMouseEnter={handleMouse} onMouseLeave={handleMouse}>
+      <span className="bar__chart-amount" style={styles}>${amount}</span>
+      <div className="bar__chart-height" style={{ height: `${amount}%` }}></div>
+      <p className="bar__chart-day">{day}</p>
+    </div>
+```
+CSS:
+```css
+.bar__chart-amount{
+  color: var(--cream);
+  background-color: var(--dark-brown);
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  display: none;
+}, 
+
+```
+Typescript:
+```js
+  const styles = onHover ? {
+    display: "block",
+    bottom: `calc(${amount + 20}%)`
+  } as React.CSSProperties : {}
+```
+
+## Author
+
+- Website - [Ebuka Nwabueze](https://www.ebukanwabueze.com)
+- Frontend Mentor - [@ebuka-nwabueze](https://www.frontendmentor.io/profile/ebuka-nwabueze)
+- Twitter - [@ebukaGN](https://www.twitter.com/ebukaGN)
