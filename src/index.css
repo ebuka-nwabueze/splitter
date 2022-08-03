@@ -25,7 +25,6 @@ body{
   margin: 0 auto;
   margin-top: 20vh;
   max-width: 650px;
-  border: 1px solid black;
   border-radius: 2rem;
   background-color: var(--white);
   min-height: 50vh;
@@ -35,4 +34,112 @@ body{
 .bill__form{
   display: flex;
   flex-direction: column;
+}
+
+.form-control{
+  display: flex;
+  flex-direction: column;
+  color: var(--grayish-cyan);
+  gap: 0.2rem;
+  margin-bottom: 2rem;
+}
+.form-control > label{
+  margin-bottom: 0.9rem;
+}
+
+.form-input{
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  background-color: var(--grayish-cyan-lighter);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.input-field{
+  outline-style: none;
+  text-align: right;
+  width: 90%;
+  background-color: transparent;
+  border: none;
+  color: var(--cyan-dark);
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.form-input_percent{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tip-percentage{
+  background-color: var(--cyan-dark);
+  color: var(--grayish-cyan-lighter);
+  font: inherit;
+  font-size: 1.5rem;
+  border-radius: 0.3rem;
+  padding: 0.7rem;
+  border: none;
+}
+
+.tip-percentage-custom{
+  border: 1px solid var(--grayish-cyan-lighter);
+  outline-style: none;
+  font: inherit;
+  text-align: right;
+  background-color: var(--grayish-cyan-lighter);
+  color: var(--cyan-dark);
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 0 1.1rem;
+}
+
+.tip-percentage-custom::placeholder{
+  color: var(--grayish-cyan);
+  font-size: 1.5rem;
+}
+
+.bill__summary{
+  background-color: var(--cyan-dark);
+  padding: 1.5rem;
+  border-radius: 1.1rem;
+}
+
+.bill__summary-info{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.bill__summary-info-label{
+  display: flex;
+  flex-direction: column;
+  color: var(--grayish-cyan-light);
+}
+
+.bill__summary-info-label > span:nth-child(2){
+  color: var(--gray-cyan-dark);
+  font-size: 0.9rem;
+}
+
+.bill__summary-amount{
+  color: var(--cyan-strong);
+  font-size: 2rem;
+}
+
+.btn-reset{
+  width: 100%;
+  padding: 0.9rem;
+  background-color: var(--cyan-strong);
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: var(--cyan-dark);
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.3rem;
+  margin-top: 0.8rem;
 }

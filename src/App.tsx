@@ -3,9 +3,10 @@ import React from "react";
 function App() {
   return (
     <div className="container">
-      
+
       <form action="" className="bill__form">
         <section className="bill__input-form">
+
           <div className="form-control">
             <label htmlFor="bill">Bill</label>
             <div className="form-input">
@@ -16,7 +17,7 @@ function App() {
                 />
               </svg>
               <input
-                type="text"
+                type="number"
                 className="input-field"
                 name="bill"
                 id="bill"
@@ -25,8 +26,9 @@ function App() {
             </div>
           </div>
 
-          <div className="form-control form-input_percent">
+          <div className="form-control">
             <label htmlFor="select-tip">Select Tip %</label>
+            <div className="form-input_percent">
             <input
               type="button"
               name="select-tip"
@@ -67,7 +69,9 @@ function App() {
               name="select-tip-custom"
               id="select-tip-custom"
               placeholder="Custom"
+              className="tip-percentage-custom"
             />
+            </div>
           </div>
 
           <div className="form-control">
@@ -80,7 +84,7 @@ function App() {
                 />
               </svg>
               <input
-                type="text"
+                type="number"
                 className="input-field"
                 name="people"
                 id="people"
@@ -91,29 +95,29 @@ function App() {
         </section>
 
         <section className="bill__summary">
-          <div className="bill__summary-amount">
-            <div className="bill__summary-amount-label">
+          <div className="bill__summary-info">
+            <div className="bill__summary-info-label">
               <span>Tip Amount</span>
               <span>/ person</span>
             </div>
 
-            <div className="bill__summary-amount-value">
+            <div className="bill__summary-amount">
               <span>$4.27</span>
             </div>
           </div>
-
-          <div className="bill__summary-total">
-            <div className="bill__summary-total-label">
+          
+          <div className="bill__summary-info">
+            <div className="bill__summary-info-label">
               <span>Total</span>
               <span>/ person</span>
             </div>
 
-            <div className="bill__summary-total-value">
+            <div className="bill__summary-amount">
               <span>$32.79</span>
             </div>
           </div>
 
-          <button type="reset">Reset</button>
+          <button type="reset" className="btn-reset">Reset</button>
         </section>
       </form>
 
