@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+input{
+  cursor: pointer;
+}
+
 :root {
   --cyan-strong: hsl(172, 67%, 45%);
   --cyan-dark: hsl(183, 100%, 15%);
@@ -21,13 +25,16 @@ body{
   background-color: var(--grayish-cyan-light);
 }
 
+.brand{
+  text-align: center;
+  margin: 3rem 0rem;
+}
+
 .container{
   margin: 0 auto;
-  margin-top: 20vh;
-  max-width: 650px;
+  max-width: 900px;
   border-radius: 2rem;
   background-color: var(--white);
-  min-height: 50vh;
   padding: 2em;
 }
 
@@ -39,7 +46,7 @@ body{
 .form-control{
   display: flex;
   flex-direction: column;
-  color: var(--grayish-cyan);
+  color: var(--gray-cyan-dark);
   gap: 0.2rem;
   margin-bottom: 2rem;
 }
@@ -55,6 +62,7 @@ body{
   justify-content: space-around;
   align-items: center;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .input-field{
@@ -98,7 +106,7 @@ body{
 
 .tip-percentage-custom::placeholder{
   color: var(--grayish-cyan);
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .bill__summary{
@@ -142,4 +150,25 @@ body{
   border: none;
   border-radius: 0.3rem;
   margin-top: 0.8rem;
+  cursor: pointer;
+}
+
+@media(min-width:769px){
+  .bill__form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .bill__input-form{
+    flex: 1 1 0;
+  }
+  .bill__summary{
+    flex: 1 1 0;
+  }
+  .form-input_percent{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
 }
