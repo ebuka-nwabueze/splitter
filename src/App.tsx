@@ -117,7 +117,7 @@ function App() {
 
             <div className="form-group">
               <label htmlFor="bill">Number of People</label>
-              <p className="input-error">Can't be zero</p>
+              <span className="input-error">Can't be zero</span>
               <span className="people"></span>
                 <input
                   type="number"

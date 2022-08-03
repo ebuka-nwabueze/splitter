@@ -137,6 +137,7 @@ body {
   color: var(--error);
   display: inline-block;
   text-align: right;
+  margin-left: 2.4rem;
 }
 
 .form-input_percent {
@@ -157,7 +158,7 @@ body {
 
 .tip-percentage-custom {
   border: 1px solid var(--grayish-cyan-lighter);
-  outline-style: none;
+  outline-color: var(--cyan-strong);
   font: inherit;
   text-align: right;
   background-color: var(--grayish-cyan-lighter);
@@ -247,4 +248,7 @@ body {
     justify-items: flex-end;
     align-self: end;
   } */
+  .input-error{
+    margin-left: 5.5rem;
+  }
 }
