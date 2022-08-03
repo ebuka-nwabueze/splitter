@@ -15,7 +15,7 @@ function App() {
       <div className="container">
         <form action="" className="bill__form">
           <section className="bill__input-form">
-            <div className="form-control">
+            {/* <div className="form-control">
               <label htmlFor="bill">Bill</label>
               <div className="form-input">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="17">
@@ -29,9 +29,23 @@ function App() {
                   className="input-field"
                   name="bill"
                   id="bill"
+                  min="0"
                   required
                 />
               </div>
+            </div> */}
+
+            <div className="form-group">
+              <label htmlFor="bill">Bill</label>
+              <span className="bill"></span>
+                <input
+                  type="number"
+                  min="0"
+                  className="form-group_input"
+                  name="bill"
+                  id="bill"
+                  required
+                />
             </div>
 
             <div className="form-control">
@@ -82,7 +96,7 @@ function App() {
               </div>
             </div>
 
-            <div className="form-control">
+            {/* <div className="form-control">
               <label htmlFor="number-people">Number of People</label>
               <div className="form-input">
                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="16">
@@ -99,6 +113,19 @@ function App() {
                   required
                 />
               </div>
+            </div> */}
+
+            <div className="form-group">
+              <label htmlFor="bill">Number of People</label>
+              <span className="people"></span>
+                <input
+                  type="number"
+                  min="0"
+                  className="form-group_input"
+                  name="people"
+                  id="people"
+                  required
+                />
             </div>
           </section>
 
