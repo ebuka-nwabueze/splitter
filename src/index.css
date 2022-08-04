@@ -20,6 +20,7 @@ input[type="number"]::-webkit-outer-spin-button {
 :root {
   --cyan-strong: hsl(172, 67%, 45%);
   --cyan-light: hsl(172, 56%, 71%);
+  --cyan-disabled: hsl(172, 58%, 29%);
   --cyan-dark: hsl(183, 100%, 15%);
   --gray-cyan-dark: hsl(186, 14%, 43%);
   --grayish-cyan: hsl(184, 14%, 56%);
@@ -27,6 +28,13 @@ input[type="number"]::-webkit-outer-spin-button {
   --grayish-cyan-lighter: hsl(189, 41%, 97%);
   --error: hsla(24, 89%, 58%, 0.809);
   --white: hsl(0, 0%, 100%);
+}
+
+button:disabled,
+button[disabled]{
+  background-color: var(--cyan-disabled);
+  color: #666666;
+  pointer-events: none;
 }
 
 body {
@@ -143,6 +151,10 @@ body {
   display: inline-block;
   text-align: right;
   margin-left: 2.4rem;
+}
+
+.error-outline{
+  outline-color: var(--error);
 }
 
 .form-input_percent {

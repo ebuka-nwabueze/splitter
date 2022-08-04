@@ -1,16 +1,22 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
+
+type formData = {
+  bill: "" | number,
+  people: "" | number
+}
 
 function App() {
   const [isError, setIsError] = useState(false);
   const [tipAmount, setTipAmount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [tipPercent, setTipPercent] = useState(0);
-  const [customPercent, setCustomPercent] = useState(0);
+  const [tipPercent, setTipPercent] = useState<number | "">("");
+  const [customPercent, setCustomPercent] = useState<number | "">("");
   const [percentClicked, setPercentClicked] = useState(false);
   const [percentClickedId, setPercentClickedId] = useState("");
-  const [formData, setFormData] = useState({
-    bill: 0,
-    people: 0,
+  const [resetReady, setResetReady] = useState(true);
+  const [formData, setFormData] = useState<formData>({
+    bill: "" ,
+    people: "",
   });
   const { bill, people } = formData;
 
@@ -19,7 +25,7 @@ function App() {
   };
 
   const handleClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    setCustomPercent(0)
+    setCustomPercent("");
     setTipPercent(+e.currentTarget.value);
     setPercentClicked(true);
     setPercentClickedId(e.currentTarget.id);
@@ -32,24 +38,54 @@ function App() {
   };
 
   const handleCustomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPercentClickedId("");
+    setPercentClicked(false);
+    setTipPercent(0)
+    setCustomPercent(+e.target.value);
+  };
+
+  const round = (num: number | "") => {
+    if(typeof num === "number"){
+      return new Intl.NumberFormat("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(num);
+    }
+  };
+
+  const handleReset = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    setFormData({
+      bill: "" ,
+      people: "",
+    })
+    setCustomPercent("")
+    setTipPercent("")
     setPercentClickedId("")
     setPercentClicked(false)
-    setCustomPercent(+e.target.value)
+    setResetReady(true)
   }
 
   useEffect(() => {
-    const percent = (customPercent || tipPercent)/100
-    if(bill && people && percent){
-      setTipAmount((bill * percent) / people)
-      setTotalAmount((bill/people) + tipAmount)
-    }else{
-      setTotalAmount(0)
-      setTipAmount(0)
+    const percent = (customPercent || tipPercent);
+
+    if (people <= 0) {
+      setIsError(true);
+    } else {
+      setIsError(false);
     }
-  }, [bill, people,customPercent,tipPercent, tipAmount])
 
-  
-
+    // if (typeof bill === "number" && typeof people === "number" && typeof percent === "number") 
+    
+    if(bill && people && percent){
+      setResetReady(false)
+      setTipAmount((bill * percent/100) / people);
+      setTotalAmount(bill / people + tipAmount);
+    } else {
+      setTotalAmount(0);
+      setTipAmount(0);
+    }
+  }, [bill, people, customPercent, tipPercent, tipAmount, resetReady]);
 
   return (
     <div className="">
@@ -132,19 +168,23 @@ function App() {
                   className="tip-percentage-custom"
                   onChange={handleCustomChange}
                   value={customPercent}
-                  min="0"
+                  min=""
                 />
               </div>
             </div>
 
             <div className="form-group">
               <label htmlFor="bill">Number of People</label>
-              <span className="input-error">Can't be zero</span>
+              {isError && <span className="input-error">Can't be zero</span>}
               <span className="people"></span>
               <input
                 type="number"
                 min="0"
-                className="form-group_input"
+                className={
+                  isError
+                    ? "form-group_input error-outline"
+                    : "form-group_input"
+                }
                 name="people"
                 id="people"
                 placeholder="0"
@@ -163,7 +203,7 @@ function App() {
               </div>
 
               <div className="bill__summary-amount">
-                <span>${tipAmount}</span>
+                <span>${round(tipAmount)}</span>
               </div>
             </div>
 
@@ -174,11 +214,11 @@ function App() {
               </div>
 
               <div className="bill__summary-amount">
-                <span>${totalAmount}</span>
+                <span>${round(totalAmount)}</span>
               </div>
             </div>
 
-            <button type="reset" className="btn-reset">
+            <button disabled={resetReady} type="button" className="btn-reset" onClick={handleReset}>
               Reset
             </button>
           </section>
