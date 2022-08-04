@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+input{
+  cursor: pointer;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -127,6 +131,7 @@ body {
   background-color: var(--grayish-cyan-lighter);
   border: none;
   color: var(--cyan-dark);
+  font: inherit;
   font-size: 2rem;
   font-weight: 900;
   padding: 0.5rem 1rem;
@@ -156,6 +161,11 @@ body {
   border: none;
 }
 
+.percent-clicked{
+  background-color: var(--cyan-light);
+  color: var(--cyan-dark);
+}
+
 .tip-percentage-custom {
   border: 1px solid var(--grayish-cyan-lighter);
   outline-color: var(--cyan-strong);
@@ -168,10 +178,17 @@ body {
   padding: 0 1.1rem;
 }
 
-.tip-percentage-custom::placeholder {
+.tip-percentage-custom::placeholder , ::placeholder{
   color: var(--grayish-cyan);
   font-size: 1rem;
 }
+::placeholder{
+  color: var(--grayish-cyan);
+  font-size: 2rem;
+  font-family: "Space Mono", monospace;
+}
+
+
 
 .bill__summary {
   background-color: var(--cyan-dark);
