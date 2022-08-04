@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 
 function App() {
   const [isError, setIsError] = useState(false);
-  const [tipAmount, setTipAmount] = useState(0.0);
-  const [totalAmount, setTotalAmount] = useState(0.0);
-  const [tipPercent, setTipPercent] = useState("");
-  const [customPercent, setCustomPercent] = useState("");
+  const [tipAmount, setTipAmount] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [tipPercent, setTipPercent] = useState(0);
+  const [customPercent, setCustomPercent] = useState(0);
   const [percentClicked, setPercentClicked] = useState(false);
   const [percentClickedId, setPercentClickedId] = useState("");
   const [formData, setFormData] = useState({
-    bill: "",
-    people: "",
+    bill: 0,
+    people: 0,
   });
+  const { bill, people } = formData;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.id]: +e.target.value }));
   };
 
   const handleClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    setCustomPercent("")
-    setTipPercent(e.currentTarget.value);
+    setCustomPercent(0)
+    setTipPercent(+e.currentTarget.value);
     setPercentClicked(true);
     setPercentClickedId(e.currentTarget.id);
   };
@@ -33,10 +34,22 @@ function App() {
   const handleCustomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPercentClickedId("")
     setPercentClicked(false)
-    setCustomPercent(e.target.value)
+    setCustomPercent(+e.target.value)
   }
 
-  const { bill, people } = formData;
+  useEffect(() => {
+    const percent = (customPercent || tipPercent)/100
+    if(bill && people && percent){
+      setTipAmount((bill * percent) / people)
+      setTotalAmount((bill/people) + tipAmount)
+    }else{
+      setTotalAmount(0)
+      setTipAmount(0)
+    }
+  }, [bill, people,customPercent,tipPercent, tipAmount])
+
+  
+
 
   return (
     <div className="">
@@ -119,6 +132,7 @@ function App() {
                   className="tip-percentage-custom"
                   onChange={handleCustomChange}
                   value={customPercent}
+                  min="0"
                 />
               </div>
             </div>
