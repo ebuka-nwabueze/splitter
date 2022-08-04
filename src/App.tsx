@@ -26,7 +26,7 @@ function App() {
 
   const handleClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     setCustomPercent("");
-    setTipPercent(+e.currentTarget.value);
+    setTipPercent(Number(e.currentTarget.getAttribute("data-value")));
     setPercentClicked(true);
     setPercentClickedId(e.currentTarget.id);
   };
@@ -84,6 +84,7 @@ function App() {
     } else {
       setTotalAmount(0);
       setTipAmount(0);
+      setResetReady(true)
     }
   }, [bill, people, customPercent, tipPercent, tipAmount, resetReady]);
 
@@ -123,24 +124,27 @@ function App() {
                 <input
                   type="button"
                   name="tipPercent"
+                  data-value="5"
                   id="tipPercent5"
-                  value="5"
+                  value="5%"
                   className={percentClass("tipPercent5")}
                   onClick={handleClick}
                 />
                 <input
                   type="button"
                   name="tipPercent"
+                  data-value="10"
                   id="tipPercent10"
-                  value="10"
+                  value="10%"
                   className={percentClass("tipPercent10")}
                   onClick={handleClick}
                 />
                 <input
                   type="button"
                   name="tipPercent"
+                  data-value="15"
                   id="tipPercent15"
-                  value="15"
+                  value="15%"
                   className={percentClass("tipPercent15")}
                   onClick={handleClick}
                 />
@@ -148,15 +152,17 @@ function App() {
                   type="button"
                   name="tipPercent"
                   id="tipPercent25"
-                  value="25"
+                  data-value="25"
+                  value="25%"
                   onClick={handleClick}
                   className={percentClass("tipPercent25")}
                 />
                 <input
                   type="button"
                   name="tipPercent"
+                  data-value="50"
                   id="tipPercent50"
-                  value="50"
+                  value="50%"
                   onClick={handleClick}
                   className={percentClass("tipPercent50")}
                 />

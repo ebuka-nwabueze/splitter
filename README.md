@@ -9,7 +9,6 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -32,10 +31,12 @@ Desktop
 
 ### Links
 
-- Live Site URL: [Expense chart Component](https://master--effulgent-daifuku-376ef4.netlify.app/)
+- Live Site URL: [Tip Calculator](https://master--effulgent-daifuku-376ef4.netlify.app/)
 
 ## Built with
 
+- Typescript
+- React
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
@@ -59,16 +60,12 @@ button[disabled] {
 }
 ```
 
-HTML:
-
+- I had to use the html value property to display the perecentage. An alternative to storing data in the html element was to use data-attribute.
 ```html
-
+<input data-value="5">
 ```
-
-CSS:
-
-```css
-
+```js
+Number(e.currentTarget.getAttribute("data-value"))
 ```
 
 
