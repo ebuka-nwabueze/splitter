@@ -17,9 +17,8 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 
 Users should be able to:
 
-- View the optimal layout depending on their device's screen size for the preview  components
+- View the optimal layout depending on their device's screen size for the preview components
 - See hover and focus states for interactive elements
-
 
 ### Screenshot
 
@@ -31,12 +30,9 @@ Desktop
 
 ![](./public/design/expense-desktop.png)
 
-
-
 ### Links
 
 - Live Site URL: [Expense chart Component](https://master--effulgent-daifuku-376ef4.netlify.app/)
-
 
 ## Built with
 
@@ -52,20 +48,40 @@ Desktop
 .grid-template-columns: repeat(2, minmax(0, 1fr));
 ```
 
+- To set the disabled css in html
 
-see below:
+```css
+button:disabled,
+button[disabled] {
+  background-color: var(--cyan-disabled);
+  color: #666666;
+  pointer-events: none;
+}
+```
 
 HTML:
+
 ```html
 
 ```
+
 CSS:
+
 ```css
 
 ```
-Typescript:
-```js
 
+
+- To convert numbers in decimals efficiently:
+```ts
+const round = (num: number | "") => {
+  if (typeof num === "number") {
+    return new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(num);
+  }
+};
 ```
 
 ## Author
